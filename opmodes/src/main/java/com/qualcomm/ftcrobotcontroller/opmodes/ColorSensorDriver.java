@@ -32,10 +32,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 
-import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
@@ -76,7 +76,7 @@ public class ColorSensorDriver extends LinearOpMode {
 
     float hsvValues[] = {0,0,0};
     final float values[] = hsvValues;
-    final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
+//    final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
     while (opModeIsActive()) {
 
       enableLed(t.isPressed());
@@ -98,11 +98,11 @@ public class ColorSensorDriver extends LinearOpMode {
       telemetry.addData("Blue ", colorSensor.blue());
       telemetry.addData("Hue", hsvValues[0]);
 
-      relativeLayout.post(new Runnable() {
-        public void run() {
-          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
-        }
-      });
+//      relativeLayout.post(new Runnable() {
+//        public void run() {
+//          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
+//        }
+//      });
       waitOneFullHardwareCycle();
     }
   }

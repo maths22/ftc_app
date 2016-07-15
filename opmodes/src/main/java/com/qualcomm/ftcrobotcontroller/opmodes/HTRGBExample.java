@@ -36,7 +36,7 @@ import android.graphics.Color;
 import android.view.View;
 
 import com.qualcomm.ftccommon.DbgLog;
-import com.qualcomm.ftcrobotcontroller.R;
+//import com.qualcomm.ftcrobotcontroller.R;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
@@ -86,7 +86,7 @@ public class HTRGBExample extends LinearOpMode {
 
     // get a reference to the RelativeLayout so we can change the background
     // color of the Robot Controller app to match the hue detected by the RGB sensor.
-    final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
+//    final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(R.id.RelativeLayout);
 
     // bPrevState and bCurrState represent the previous and current state of the button.
     boolean bPrevState = false;
@@ -142,11 +142,11 @@ public class HTRGBExample extends LinearOpMode {
       // change the background color to match the color detected by the RGB sensor.
       // pass a reference to the hue, saturation, and value array as an argument
       // to the HSVToColor method.
-      relativeLayout.post(new Runnable() {
-        public void run() {
-          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
-        }
-      });
+//      relativeLayout.post(new Runnable() {
+//        public void run() {
+//          relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, values));
+//        }
+//      });
 
       // wait a hardware cycle before iterating.
       waitOneFullHardwareCycle();

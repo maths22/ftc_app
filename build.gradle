@@ -16,7 +16,18 @@ allprojects {
     repositories {
         jcenter()
         flatDir {
-            dirs 'out'
+            dirs 'out', "$rootDir/libs"
         }
     }
 }
+
+ext.androidSdkDir = System.env.ANDROID_HOME
+
+if(androidSdkDir == null) {
+    Properties localProps = new Properties()
+    localProps.load(new FileInputStream(file('local.properties')))
+
+    ext.androidSdkDir = localProps['sdk.dir']
+}
+
+ext.buildToolsVersion = '21.1.2'

@@ -41,6 +41,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * <p>
  * Enables control of the robot via the gamepad
  */
+@RegisterOpMode
 public class K9Line extends OpMode {
 
 	final static double MOTOR_POWER = 0.15; // Higher values will cause the robot to move faster

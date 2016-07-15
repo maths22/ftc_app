@@ -1,0 +1,43 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+apply plugin: 'com.android.library'
+
+android {
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 19
+    }
+
+    compileSdkVersion 19
+    buildToolsVersion '21.1.2'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+dependencies {
+    compile project(':FtcRobotControllerLibrary')
+}
+
+afterEvaluate {
+    android.libraryVariants.all { variant ->
+        variant.assemble.dependsOn(dexClasses)
+    }
+}
+
+task dexClasses << {
+
+    String cmdExt = Os.isFamily(Os.FAMILY_WINDOWS) ? '.bat' : ''
+
+    exec {
+        commandLine "${androidSdkDir}/build-tools/${buildToolsVersion}/dx${cmdExt}", '--dex',
+                "--output=${buildDir}/../opmodes.dex",
+                "${buildDir}/intermediates/bundles/debug/classes.jar"
+    }
+}
